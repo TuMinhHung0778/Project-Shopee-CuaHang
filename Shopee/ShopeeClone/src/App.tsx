@@ -5,8 +5,9 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
   return (
-    <div className='App bg-red-500'>
+    <div className='bg-red-500'>
       <div>
         <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
           <img src='/vite.svg' className='logo' alt='Vite logo' />
@@ -26,4 +27,5 @@ function App() {
     </div>
   )
 }
+
 export default App
