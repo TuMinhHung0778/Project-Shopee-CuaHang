@@ -230,11 +230,15 @@ Thêm vào file: `src/index.css`
 
 Các Extension nên cài:
 
-ESLint
-Prettier - Code formatter
-Tailwindcss
-EditorConfig for VS Code
+- ESLint
+
+- Prettier - Code formatter
+
+- Tailwindcss
+
+- EditorConfig for VS Code
+
 Cấu hình VS Code:
 
-Bật Format On Save
-Chọn Default Formatter là Prettier
+- Bật Format On Save
+- Chọn Default Formatter là Prettier
