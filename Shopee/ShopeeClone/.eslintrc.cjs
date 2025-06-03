@@ -1,4 +1,6 @@
-{
+const path = require('path')
+
+module.exports = {
   "extends": [
     // Chúng ta sẽ dùng các rule mặc định từ các plugin mà chúng ta đã cài.
     "eslint:recommended",
@@ -20,7 +22,7 @@
     // Nói ESLint cách xử lý các import
     "import/resolver": {
       "node": {
-        "paths": ["src"],
+        "paths": [path.resolve(__dirname)],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }

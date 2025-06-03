@@ -229,6 +229,38 @@ Thêm vào file: `src/index.css`
 @tailwind utilities;
 ```
 
+### Cấu hình vite config
+
+Cài package `@types/node` để sử dụng node js trong file ts không bị lỗi
+
+```bash
+yarn add -D @types/node
+```
+
+file vite.config.ts
+
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import path from "path";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+  },
+  css: {
+    devSorcemap: true,
+  },
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, "./src"),
+    },
+  },
+});
+```
+
 ### Cài extension và setup VS Code
 
 Các Extension nên cài:
@@ -245,3 +277,9 @@ Cấu hình VS Code:
 
 - Bật Format On Save
 - Chọn Default Formatter là Prettier
+
+> Có 3 môi trường khi làm việc
+>
+> 1. Môi trường VS Code, khi chúng ta đưa chuột vào click thì chạy đến đúng file
+> 2. Môi trường ES Lint
+>    3.Môi trường Terminal\*
