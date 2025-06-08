@@ -14,7 +14,9 @@ export default function useRouteElements() {
       path: '/login',
       element: (
         <>
-          <Login />
+          <RegisterLayout>
+            <Login />
+          </RegisterLayout>
         </>
       )
     },
