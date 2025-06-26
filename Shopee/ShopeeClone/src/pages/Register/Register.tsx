@@ -1,11 +1,11 @@
-import { data, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { schema } from 'src/utils/rules'
-import Input from 'src/components/Input'
 import { useMutation } from '@tanstack/react-query'
+import { omit } from 'lodash'
+import { schema, type Schema } from 'src/utils/rules'
+import Input from 'src/components/Input'
 import { registerAccount } from 'src/apis/auth.api'
-import { omit, set } from 'lodash'
 import { isAxiosUnprocessableEntityError } from 'src/utils/utils'
 import type { ResponseApi } from 'src/types/utils.type'
 
@@ -15,7 +15,7 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    watch,
+    //watch,
     setError,
     formState: { errors }
   } = useForm<FormData>({

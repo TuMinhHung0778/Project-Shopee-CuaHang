@@ -1,7 +1,6 @@
-import { data } from 'react-router-dom'
 import axios, { AxiosError, type AxiosInstance } from 'axios'
 import HttpStatusCode from 'src/constants/httpStatusCode.enum'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 class Http {
   instance: AxiosInstance
