@@ -1,13 +1,37 @@
+'use client'
+
 import { Link } from 'react-router-dom'
+import { useRef, useState } from 'react'
+import { useFloating, FloatingPortal, arrow, offset, shift } from '@floating-ui/react-dom-interactions'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Header() {
+  const [open, setOpen] = useState(false)
+  const arrowRef = useRef<HTMLElement>(null)
+
+  const { x, y, reference, floating, strategy, middlewareData } = useFloating({
+    middleware: [offset(6), shift(), arrow({ element: arrowRef })]
+  })
+
+  // Sửa lại các function này - uncomment và thêm logic
+  const showPopover = () => {
+    setOpen(true)
+  }
+
+  const hidePopover = () => {
+    setOpen(false)
+  }
+
   return (
     <div className='pb-5 pt-2 bg-[linear-gradient(-180deg,_#f53d2d,_#f63)] text-white'>
-      <div className='container mx-auto px-4'>
-        {/* Top bar */}
-        <div className='flex justify-between items-center'>
-          <div className='text-sm'>Kênh Người Bán | Trở thành Người bán Shopee | Tải ứng dụng | Kết nối</div>
-          <div className='flex items-center space-x-4'>
+      <div className='container'>
+        <div className='flex justify-end'>
+          <div
+            className='flex items-center py-1 hover:text-gray-300 cursor-pointer'
+            ref={reference}
+            onMouseEnter={showPopover}
+            onMouseLeave={hidePopover}
+          >
             <div className='flex items-center py-1 hover:text-gray-300 cursor-pointer'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -15,41 +39,7 @@ export default function Header() {
                 viewBox='0 0 24 24'
                 strokeWidth={1.5}
                 stroke='currentColor'
-                className='w-4 h-4'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0'
-                />
-              </svg>
-              <span className='mx-1 text-sm'>Thông Báo</span>
-            </div>
-            <div className='flex items-center py-1 hover:text-gray-300 cursor-pointer'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.5}
-                stroke='currentColor'
-                className='w-4 h-4'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z'
-                />
-              </svg>
-              <span className='mx-1 text-sm'>Hỗ Trợ</span>
-            </div>
-            <div className='flex items-center py-1 hover:text-gray-300 cursor-pointer'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.5}
-                stroke='currentColor'
-                className='w-4 h-4'
+                className='w-5 h-5'
               >
                 <path
                   strokeLinecap='round'
@@ -57,19 +47,69 @@ export default function Header() {
                   d='M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418'
                 />
               </svg>
-              <span className='mx-1 text-sm'>Tiếng Việt</span>
+              <span className='mx-1'>Tiếng Việt</span>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
                 viewBox='0 0 24 24'
                 strokeWidth={1.5}
                 stroke='currentColor'
-                className='w-4 h-4'
+                className='w-5 h-5'
               >
                 <path strokeLinecap='round' strokeLinejoin='round' d='m19.5 8.25-7.5 7.5-7.5-7.5' />
               </svg>
             </div>
-            <div className='text-sm hover:text-gray-300 cursor-pointer'>duthanhduoc</div>
+
+            <FloatingPortal>
+              <AnimatePresence>
+                {open && (
+                  <motion.div
+                    ref={floating}
+                    style={{
+                      position: strategy,
+                      top: y ?? 0,
+                      left: x ?? 0,
+                      width: 'max-content',
+                      transformOrigin: 'center',
+                      zIndex: 50
+                    }}
+                    initial={{ opacity: 0, transform: 'scale(0)' }}
+                    animate={{ opacity: 1, transform: 'scale(1)' }}
+                    exit={{ opacity: 0, transform: 'scale(0)' }}
+                    transition={{ duration: 0.2 }}
+                    onMouseEnter={showPopover}
+                    onMouseLeave={hidePopover}
+                  >
+                    <span
+                      ref={arrowRef}
+                      className='border-x-transparent border-t-transparent border-b-white border-[11px] absolute -translate-y-full z-10'
+                      style={{
+                        left: middlewareData.arrow?.x,
+                        top: middlewareData.arrow?.y
+                      }}
+                    />
+                    <div className='bg-white relative shadow-md rounded-sm border border-gray-200'>
+                      <div className='flex flex-col py-2 px-3'>
+                        <button className='py-2 px-3 hover:text-orange text-gray-800 text-left'>Tiếng Việt</button>
+                        <button className='py-2 px-3 hover:text-orange mt-2 text-gray-800 text-left'>English</button>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </FloatingPortal>
+
+            <div className='flex items-center py-1 hover:text-gray-300 cursor-pointer ml-6'>
+              <div className='w-6 h-6 mr-2 flex-shrink-0'>
+                <img
+                  src='https://cf.shopee.vn/file/d04ea22afab6e6d250a370d7ccc2e675_tn'
+                  alt='avatar'
+                  className='w-full h-full object-cover rounded-full'
+                />
+              </div>
+            </div>
+
+            <div className='text-sm hover:text-gray-300 cursor-pointer'>minhhungit9135</div>
           </div>
         </div>
 
