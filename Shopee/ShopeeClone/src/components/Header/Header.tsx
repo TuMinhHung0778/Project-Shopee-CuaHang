@@ -5,6 +5,7 @@ export default function Header() {
   return (
     <div className='pb-5 pt-2 bg-[linear-gradient(-180deg,_#f53d2d,_#f63)] text-white'>
       <div className='container'>
+        {/* Language and User Profile */}
         <div className='flex justify-end'>
           <Popover
             className='flex items-center py-1 hover:text-gray-300 cursor-pointer'
@@ -75,6 +76,7 @@ export default function Header() {
             <div>minhhungit9135</div>
           </Popover>
         </div>
+        {/* Logo and Search Bar */}
         <div className='grid grid-cols-12 gap-4 mt-4 items-end'>
           <Link to='/' className='col-span-2'>
             <svg viewBox='0 0 192 65' className='h-11 fill-white'>
@@ -85,56 +87,173 @@ export default function Header() {
           </Link>
 
           {/* Search bar */}
-          <div className='col-span-9'>
-            <form className='relative'>
-              <div className='bg-white rounded-sm p-1 flex'>
-                <input
-                  type='text'
-                  name='search'
-                  placeholder='Free Ship Đơn Từ 0Đ'
-                  className='text-black px-3 py-2 flex-grow border-none outline-none bg-transparent text-sm'
-                />
-                <button
-                  type='submit'
-                  className='rounded-sm py-2 px-6 flex-shrink-0 bg-[#fb5533] hover:opacity-90 flex items-center justify-center'
-                >
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    strokeWidth={2}
-                    stroke='currentColor'
-                    className='w-5 h-5 text-white'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z'
-                    />
-                  </svg>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          {/* Cart */}
-          <div className='col-span-1 flex justify-center'>
-            <Link to='/cart' className='relative hover:opacity-80'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                fill='none'
-                viewBox='0 0 24 24'
-                strokeWidth={1.5}
-                stroke='currentColor'
-                className='w-8 h-8'
+          <form className='col-span-9'>
+            <div className='bg-white rounded-sm p-1 flex'>
+              <input
+                type='text'
+                name='search'
+                className='text-black px-3 py-2 flex-grow border-none outline-none bg-transparent text-sm'
+                placeholder='Free Ship Đơn Từ 0Đ'
+              />
+              <button
+                className='rounded-sm py-2 px-6 flex-shrink-0 bg-[#fb5533] hover:opacity-90 flex items-center justify-center'
+                type='submit'
               >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z'
-                />
-              </svg>
-            </Link>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth={2}
+                  stroke='currentColor'
+                  className='w-5 h-5 text-white'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z'
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
+          {/* Giỏ hàng */}
+          <div className='col-span-1 justify-self-end'>
+            <Popover
+              renderPopover={
+                <div className='bg-white relative shadow-md rounded-sm border border-gray-200 max-w-[400px] text-sm'>
+                  <div className='p-2'>
+                    <div className='text-gray-400 capitalize'>Sản phẩm mới thêm</div>
+                    <div className='mt-5'>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            src='https://down-vn.img.susercontent.com/file/c3f3edfaa9f6dafc4825b77d8449999d'
+                            alt='anh'
+                            className='w-11 h-11 object-cover'
+                          />
+                        </div>
+                        <div className='flex-grow ml-2 overflow-hidden'>
+                          <div className='truncate'>
+                            [LIFEMCMBP2 -12% đơn 250K] Bộ Nồi Inox 3 Đáy SUNHOUSE SH334 16, 20, 24 cm
+                          </div>
+                          <div className='ml-2 flex-shrink-0'>
+                            <span className='text-orange'>đ469.000</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            src='https://down-vn.img.susercontent.com/file/c3f3edfaa9f6dafc4825b77d8449999d'
+                            alt='anh'
+                            className='w-11 h-11 object-cover'
+                          />
+                        </div>
+                        <div className='flex-grow ml-2 overflow-hidden'>
+                          <div className='truncate'>
+                            [LIFEMCMBP2 -12% đơn 250K] Bộ Nồi Inox 3 Đáy SUNHOUSE SH334 16, 20, 24 cm
+                          </div>
+                          <div className='ml-2 flex-shrink-0'>
+                            <span className='text-orange'>đ469.000</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            src='https://down-vn.img.susercontent.com/file/c3f3edfaa9f6dafc4825b77d8449999d'
+                            alt='anh'
+                            className='w-11 h-11 object-cover'
+                          />
+                        </div>
+                        <div className='flex-grow ml-2 overflow-hidden'>
+                          <div className='truncate'>
+                            [LIFEMCMBP2 -12% đơn 250K] Bộ Nồi Inox 3 Đáy SUNHOUSE SH334 16, 20, 24 cm
+                          </div>
+                          <div className='ml-2 flex-shrink-0'>
+                            <span className='text-orange'>đ469.000</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            src='https://down-vn.img.susercontent.com/file/c3f3edfaa9f6dafc4825b77d8449999d'
+                            alt='anh'
+                            className='w-11 h-11 object-cover'
+                          />
+                        </div>
+                        <div className='flex-grow ml-2 overflow-hidden'>
+                          <div className='truncate'>
+                            [LIFEMCMBP2 -12% đơn 250K] Bộ Nồi Inox 3 Đáy SUNHOUSE SH334 16, 20, 24 cm
+                          </div>
+                          <div className='ml-2 flex-shrink-0'>
+                            <span className='text-orange'>đ469.000</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            src='https://down-vn.img.susercontent.com/file/c3f3edfaa9f6dafc4825b77d8449999d'
+                            alt='anh'
+                            className='w-11 h-11 object-cover'
+                          />
+                        </div>
+                        <div className='flex-grow ml-2 overflow-hidden'>
+                          <div className='truncate'>
+                            [LIFEMCMBP2 -12% đơn 250K] Bộ Nồi Inox 3 Đáy SUNHOUSE SH334 16, 20, 24 cm
+                          </div>
+                          <div className='ml-2 flex-shrink-0'>
+                            <span className='text-orange'>đ469.000</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='mt-4 flex'>
+                        <div className='flex-shrink-0'>
+                          <img
+                            src='https://down-vn.img.susercontent.com/file/c3f3edfaa9f6dafc4825b77d8449999d'
+                            alt='anh'
+                            className='w-11 h-11 object-cover'
+                          />
+                        </div>
+                        <div className='flex-grow ml-2 overflow-hidden'>
+                          <div className='truncate'>
+                            [LIFEMCMBP2 -12% đơn 250K] Bộ Nồi Inox 3 Đáy SUNHOUSE SH334 16, 20, 24 cm
+                          </div>
+                          <div className='ml-2 flex-shrink-0'>
+                            <span className='text-orange'>đ469.000</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='flex mt-6 items-center justify-between'>
+                      <div className='captitalize text-xs text-gray-500'>Thêm vào giỏ hàng</div>
+                      <button className='capitalize bg-orange hover:bg-opacity-90 px-4 py-2 rounded-sm text-white'>
+                        Xem giỏ hàng
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              }
+            >
+              <Link to='/'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth={1.5}
+                  stroke='currentColor'
+                  className='w-8 h-8'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z'
+                  />
+                </svg>
+              </Link>
+            </Popover>
           </div>
         </div>
       </div>
