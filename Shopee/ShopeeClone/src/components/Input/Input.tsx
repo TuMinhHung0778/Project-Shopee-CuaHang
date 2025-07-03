@@ -6,7 +6,7 @@ interface Props {
   placeholder?: string
   className?: string
   name: string
-  register: UseFormRegister<any> 
+  register: UseFormRegister<any>
   rules?: RegisterOptions
   autoComplete?: string
 }
