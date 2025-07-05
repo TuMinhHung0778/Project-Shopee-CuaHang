@@ -7,6 +7,7 @@ import MainLayout from './layouts/MainLayout'
 import Profile from './pages/Profile'
 import { useContext } from 'react'
 import { AppContext } from './contexts/app.context'
+import path from './constants/path'
 
 // Component để kiểm tra quyền truy cập cho các route yêu cầu đăng nhập
 // Nếu người dùng chưa đăng nhập, sẽ chuyển hướng đến trang đăng nhập
@@ -28,22 +29,20 @@ function RejectedRoute() {
 export default function useRouteElements() {
   const routeElements = useRoutes([
     {
-      path: '', // Route cha cho các route không yêu cầu đăng nhập
-      element: <RejectedRoute />, // Dùng RejectedRoute để kiểm tra
+      path: '',
+      element: <RejectedRoute />,
       children: [
         {
-          path: 'login', // Đường dẫn /login
+          path: path.login,
           element: (
-            // Bọc trang Login bằng RegisterLayout
             <RegisterLayout>
               <Login />
             </RegisterLayout>
           )
         },
         {
-          path: 'register', // Đường dẫn /register
+          path: path.register,
           element: (
-            // Bọc trang Register bằng RegisterLayout
             <RegisterLayout>
               <Register />
             </RegisterLayout>
@@ -52,13 +51,12 @@ export default function useRouteElements() {
       ]
     },
     {
-      path: '', // Route cha cho các route yêu cầu đăng nhập
-      element: <ProtectedRoute />, // Dùng ProtectedRoute để kiểm tra
+      path: '',
+      element: <ProtectedRoute />,
       children: [
         {
-          path: 'profile', // Đường dẫn /profile
+          path: path.profile,
           element: (
-            // Bọc trang Profile bằng MainLayout
             <MainLayout>
               <Profile />
             </MainLayout>
@@ -67,16 +65,14 @@ export default function useRouteElements() {
       ]
     },
     {
-      path: '', // Route cho trang chủ
-      index: true, // Route mặc định (trang chủ: /)
+      path: '',
+      index: true,
       element: (
-        // Bọc trang ProductList bằng MainLayout
         <MainLayout>
           <ProductList />
         </MainLayout>
       )
     }
   ])
-  // Trả về các phần tử định tuyến để sử dụng trong App
   return routeElements
 }
