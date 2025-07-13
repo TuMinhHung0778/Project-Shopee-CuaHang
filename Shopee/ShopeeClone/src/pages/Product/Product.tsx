@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ProductRating from 'src/components/ProductRating'
 import type { Product as ProductType } from 'src/types/product.type'
 import { formatCurrency, formatNumberToSocialStyle } from 'src/utils/utils'
 
@@ -33,31 +34,7 @@ export default function Product({ product }: Props) {
             </div>
           </div>
           <div className='mt-3 flex items-center justify-end'>
-            <div className='flex items-center'>
-              <div className='relative w-3 h-3'>
-                {/* SVG xám nằm phía dưới làm nền */}
-                <svg viewBox='0 0 15 15' className='w-3 h-3 text-gray-300 fill-current'>
-                  <polygon
-                    points='7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    strokeMiterlimit={10}
-                  />
-                </svg>
-                {/* SVG vàng nằm trên, bị cắt bởi width 50% */}
-                <div className='absolute top-0 left-0 h-full overflow-hidden' style={{ width: '50%' }}>
-                  <svg viewBox='0 0 15 15' className='w-3 h-3 text-yellow-300 fill-current'>
-                    <polygon
-                      points='7.5 .8 9.7 5.4 14.5 5.9 10.7 9.1 11.8 14.2 7.5 11.6 3.2 14.2 4.3 9.1 .5 5.9 5.3 5.4'
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeMiterlimit={10}
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
+            <ProductRating rating={product.rating} />
             <div className='ml-2 text-sm'>
               <span>{formatNumberToSocialStyle(product.sold)}</span>
               <span className='ml-1'>Đã bán</span>
