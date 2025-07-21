@@ -8,7 +8,7 @@ interface Props {
   pageSize: number
 }
 
-/** THUẬT TOÁN :
+/** THUẬT TOÁN PHÂN TRANG:
  * Với range = 2 áp dụng cho khoảng cách đầu, cuối và xung quanh current_page
 
 TH1: dấu "..." nằm ở phía sau current_page
