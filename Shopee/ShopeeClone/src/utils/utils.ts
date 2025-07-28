@@ -23,4 +23,5 @@ export function formatNumberToSocialStyle(value: number) {
     .toLowerCase()
 }
 
+// Hàm tính giảm giá
 export const rateSale = (original: number, sale: number) => Math.round(((original - sale) / original) * 100) + '%'
